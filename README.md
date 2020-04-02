@@ -9,7 +9,7 @@
 
 # Usage
 
-- Copy this URL and paste it in yur browser https://www.theodinproject.com/courses/databases/lessons/sql?ref=lnav
+- Copy this URL and paste it in your browser https://www.theodinproject.com/courses/databases/lessons/sql?ref=lnav
 - Follow the steps to complete all the exercises.
 
 ## Author
