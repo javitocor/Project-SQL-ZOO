@@ -32,3 +32,5 @@ ORDER BY posn, constituency,votes DESC
 
 # Show the parties that won for each Edinburgh constituency in 2017.
 
+# Show how many seats for each party in Scotland in 2017.
+
