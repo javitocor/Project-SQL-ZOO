@@ -32,5 +32,21 @@ ORDER BY posn, constituency,votes DESC
 
 # Show the parties that won for each Edinburgh constituency in 2017.
 
+SELECT constituency,party FROM
+(SELECT constituency,party, votes,
+RANK() OVER (PARTITION BY constituency ORDER BY votes DESC) as posn
+  FROM ge
+ WHERE constituency BETWEEN 'S14000021' AND 'S14000026'
+   AND yr  = 2017) WR
+WHERE WR.posn=1
+
 # Show how many seats for each party in Scotland in 2017.
 
+SELECT party,COUNT(*) FROM (
+SELECT constituency,party, votes,
+RANK() OVER (PARTITION BY constituency ORDER BY votes DESC) as posn
+  FROM ge
+ WHERE constituency LIKE 'S%'
+   AND yr  = 2017) SC
+WHERE SC.posn=1
+GROUP BY SC.party
