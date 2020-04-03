@@ -1,4 +1,4 @@
-# Show the the percentage who STRONGLY AGREE
+-- Show the the percentage who STRONGLY AGREE
 
 SELECT A_STRONGLY_AGREE
   FROM nss
@@ -6,14 +6,14 @@ SELECT A_STRONGLY_AGREE
    AND institution='Edinburgh Napier University'
    AND subject='(8) Computer Science'
 
-# Show the institution and subject where the score is at least 100 for question 15.
+-- Show the institution and subject where the score is at least 100 for question 15.
 
 SELECT institution, subject
   FROM nss
  WHERE question='Q15'
    AND score >= 100
 
-# Show the institution and score where the score for '(8) Computer Science' is less than 50 for question 'Q15'
+-- Show the institution and score where the score for '(8) Computer Science' is less than 50 for question 'Q15'
 
 SELECT institution,score
   FROM nss
@@ -21,7 +21,7 @@ SELECT institution,score
    AND score<50
    AND subject='(8) Computer Science'
 
-# Show the subject and total number of students who responded to question 22 for each of the subjects '(8) Computer Science' and '(H) Creative Arts and Design'.
+-- Show the subject and total number of students who responded to question 22 for each of the subjects '(8) Computer Science' and '(H) Creative Arts and Design'.
 
 SELECT subject, SUM(response)
   FROM nss
@@ -30,7 +30,7 @@ SELECT subject, SUM(response)
     OR subject='(H) Creative Arts and Design')
 GROUP BY subject
 
-# Show the subject and total number of students who A_STRONGLY_AGREE to question 22 for each of the subjects '(8) Computer Science' and '(H) Creative Arts and Design'.
+-- Show the subject and total number of students who A_STRONGLY_AGREE to question 22 for each of the subjects '(8) Computer Science' and '(H) Creative Arts and Design'.
 
 SELECT subject, SUM(A_STRONGLY_AGREE * response / 100)
   FROM nss
@@ -39,7 +39,7 @@ SELECT subject, SUM(A_STRONGLY_AGREE * response / 100)
     OR subject='(H) Creative Arts and Design')
 GROUP BY subject
 
-# Show the percentage of students who A_STRONGLY_AGREE to question 22 for the subject '(8) Computer Science' show the same figure for the subject '(H) Creative Arts and Design'.
+-- Show the percentage of students who A_STRONGLY_AGREE to question 22 for the subject '(8) Computer Science' show the same figure for the subject '(H) Creative Arts and Design'.
 
 SELECT subject, ROUND(SUM(response*A_STRONGLY_AGREE)/SUM(response))
   FROM nss
@@ -48,7 +48,7 @@ SELECT subject, ROUND(SUM(response*A_STRONGLY_AGREE)/SUM(response))
     OR subject='(H) Creative Arts and Design')
 GROUP BY subject
 
-# Show the average scores for question 'Q22' for each institution that include 'Manchester' in the name.
+-- Show the average scores for question 'Q22' for each institution that include 'Manchester' in the name.
 
 SELECT institution, ROUND(SUM(score*response) / SUM(response))
   FROM nss
@@ -57,7 +57,7 @@ SELECT institution, ROUND(SUM(score*response) / SUM(response))
 GROUP by institution
 ORDER BY institution
 
-# Show the institution, the total sample size and the number of computing students for institutions in Manchester for 'Q01'.
+-- Show the institution, the total sample size and the number of computing students for institutions in Manchester for 'Q01'.
 
 SELECT institution, SUM(sample), SUM(CASE
  WHEN subject
